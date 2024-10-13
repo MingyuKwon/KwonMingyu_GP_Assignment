@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8045619722975844709}
   - component: {fileID: 6150885918871016830}
   - component: {fileID: 6480819693836846150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 46558998991240969}
   - component: {fileID: 1301551703212109799}
   - component: {fileID: 5729070248280074958}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4791588702352258874}
   - component: {fileID: 1664447344797500755}
   - component: {fileID: 5458024068991735459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
