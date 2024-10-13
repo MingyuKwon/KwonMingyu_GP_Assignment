@@ -15,7 +15,6 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         int lifespan = Random.Range(RandomLifeSpanStart, RandomLifeSpanEnd);
-        Destroy(gameObject, lifespan);
 
         targetposition = transform.position;
     }
