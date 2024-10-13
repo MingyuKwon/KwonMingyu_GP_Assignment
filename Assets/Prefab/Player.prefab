@@ -245,8 +245,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5578481157447162094, guid: 06f6e27b05c63954a9df99a444692f79, type: 3}
+  BigbulletPrefab: {fileID: 5578481157447162094, guid: 5e3348253fd5aff4aa65cf9480ca98c6, type: 3}
   shootPosition: {fileID: 7324538457727795789}
-  fireDelayUnit: 0.3
+  fireDelayUnit: 0.5
+  BigfireDelayUnit: 1
 --- !u!54 &2577267927449050408
 Rigidbody:
   m_ObjectHideFlags: 0

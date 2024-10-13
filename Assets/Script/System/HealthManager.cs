@@ -28,10 +28,11 @@ public class HealthManager : MonoBehaviour
             currentHealth -= attackedDamage;
 
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            Debug.Log("OnTriggerEnter : " + transform.parent.name + " current Health : " + currentHealth);
 
             if(currentHealth <= 0)
             {
+                GamePlayManager.instance.EnemyDeathEvent.Invoke();
+                
                 if(transform.parent)
                 {
                     Destroy(transform.parent.gameObject);

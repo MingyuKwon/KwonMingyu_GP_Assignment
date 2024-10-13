@@ -23,7 +23,7 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         Vector3 moveDirectrion = (targetposition - transform.position).normalized;
-        transform.Translate(moveDirectrion * moveSpeed * Time.deltaTime);
+        transform.parent.Translate(moveDirectrion * moveSpeed * Time.deltaTime);
         targetDistance -= (moveDirectrion * moveSpeed * Time.deltaTime).magnitude;
 
         if(targetDistance > 0) return;
