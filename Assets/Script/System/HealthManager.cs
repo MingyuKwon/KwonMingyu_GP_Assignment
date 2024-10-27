@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
     public float maxHealth = 100.0f;
     private float currentHealth = 0.1f;
+    public bool bNotDestroyInvisible = false;
 
     private CapsuleCollider capsuleCollider;
     public GameObject DeathParticle;
@@ -27,6 +29,7 @@ public class HealthManager : MonoBehaviour
         {
             float attackedDamage = damageCauser.Damage;
             currentHealth -= attackedDamage;
+            UnityEngine.Debug.Log(currentHealth);
 
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
@@ -40,14 +43,27 @@ public class HealthManager : MonoBehaviour
                 }
 
                 GamePlayManager.instance.EnemyDeathEvent.Invoke();
-                
-                if(transform.parent)
+
+                if(bNotDestroyInvisible)
                 {
-                    Destroy(transform.parent.gameObject);
-                }else
-                {
-                    Destroy(transform.gameObject);
+                    if(transform.parent)
+                    {
+                        transform.parent.gameObject.SetActive(false);
+                    }else
+                    {
+                        transform.gameObject.SetActive(false);
+                    }
+
+                }else{
+                    if(transform.parent)
+                    {
+                        Destroy(transform.parent.gameObject);
+                    }else
+                    {
+                        Destroy(transform.gameObject);
+                    }
                 }
+                
             }
         }
     }

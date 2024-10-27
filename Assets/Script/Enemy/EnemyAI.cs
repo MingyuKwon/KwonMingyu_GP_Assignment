@@ -8,7 +8,7 @@ public enum EEnemyState
     MoveToBase,     
     ChasePlayer,      
     Attack,     
-    Dead      
+    GameEnd      
 }
 
 public class EnemyAI : MonoBehaviour
@@ -17,12 +17,13 @@ public class EnemyAI : MonoBehaviour
 
     public EEnemyState GetEnemyState() {return EnemyState;}
     public GameObject targetObject = null;
+    public GameObject MainBase;
 
     public float AttackRange = 15f;
 
     public void TryToSetEnemyState(EEnemyState aimEnemyState)
     {
-        if(EnemyState == EEnemyState.Dead) return;
+        if(EnemyState == EEnemyState.GameEnd) return;
 
         EnemyState = aimEnemyState;
     }
@@ -30,11 +31,28 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         EnemyState = EEnemyState.Idle;
+        MainBase = GameObject.Find("Main Base");
+
     }
 
     void Update()
     {
-        if(targetObject == null) return;
+        if(targetObject == null) 
+        {
+            if(MainBase)
+            {
+                targetObject =  MainBase;
+            }else
+            {
+                EnemyState = EEnemyState.GameEnd;
+            }
+        }
+
+        if(EnemyState == EEnemyState.GameEnd) 
+        {
+            return;
+        }
+
         if(transform.childCount < 1) return;
         float Distance = Vector3.Distance(targetObject.transform.position, transform.GetChild(0).transform.position);
 

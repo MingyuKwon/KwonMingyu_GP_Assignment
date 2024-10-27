@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6081993665316340801}
   - component: {fileID: 8088044513661225066}
   - component: {fileID: 2357680116798593460}
-  - component: {fileID: 7910780756207398776}
   - component: {fileID: 7563084318464290276}
   m_Layer: 6
   m_Name: Enemy
@@ -77,19 +76,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
   AttackRange: 10
---- !u!114 &7910780756207398776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3202408116904612802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1284186939fbff542befdf3bf11ede07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
 --- !u!114 &7563084318464290276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c8c2b1c963a984f8101979f039723b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5578481157447162094, guid: 06f6e27b05c63954a9df99a444692f79, type: 3}
+  bulletPrefab: {fileID: 5578481157447162094, guid: 875e70fe1d418f94b91a7d48340f84ff, type: 3}
   bulletMuzzle: {fileID: 2077607180638635707, guid: 4fa8256900ec93046ac4c5603dd0f224, type: 3}
   shootPosition: {fileID: 5278397119144519289}
   fireCoolTimeUnit: 1
@@ -621,6 +607,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2836004475591695743, guid: f432554f564e69242897607d34218939, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7703120728733374869}
+    - targetCorrespondingSourceObject: {fileID: 2836004475591695743, guid: f432554f564e69242897607d34218939, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2176916821463056193}
   m_SourcePrefab: {fileID: 100100000, guid: f432554f564e69242897607d34218939, type: 3}
 --- !u!4 &7133460121860177664 stripped
 Transform:
@@ -654,3 +643,16 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2176916821463056193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133460121860203296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1284186939fbff542befdf3bf11ede07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
