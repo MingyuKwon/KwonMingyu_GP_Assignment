@@ -12,10 +12,10 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
-        enemyAI = GetComponentInParent<EnemyAI>();
+        enemyAI = GetComponent<EnemyAI>();
 
         BasePosition = GameObject.Find("Main Base").transform.position;
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInChildren<NavMeshAgent>();
         agent.enabled = true;
 
         enemyAI.TryToSetEnemyState(EEnemyState.MoveToBase);
@@ -23,6 +23,8 @@ public class EnemyMove : MonoBehaviour
 
     void Update()
     {
+        if(agent == null) return;
+        
         if(enemyAI.GetEnemyState() == EEnemyState.MoveToBase)
         {
             agent.isStopped = false;
@@ -35,7 +37,13 @@ public class EnemyMove : MonoBehaviour
                 agent.SetDestination(enemyAI.targetObject.transform.position);
             }
 
-        }else
+        }else if(enemyAI.GetEnemyState() == EEnemyState.Idle)
+        {
+            agent.isStopped = true;
+            enemyAI.TryToSetEnemyState(EEnemyState.MoveToBase);
+
+
+        }else if(enemyAI.GetEnemyState() == EEnemyState.Attack)
         {
             agent.isStopped = true;
 

@@ -17,7 +17,9 @@ public class EnemyAI : MonoBehaviour
 
     public EEnemyState GetEnemyState() {return EnemyState;}
     public GameObject targetObject = null;
-    
+
+    public float AttackRange = 15f;
+
     public void TryToSetEnemyState(EEnemyState aimEnemyState)
     {
         if(EnemyState == EEnemyState.Dead) return;
@@ -32,6 +34,16 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        
+        if(targetObject == null) return;
+        if(transform.childCount < 1) return;
+        float Distance = Vector3.Distance(targetObject.transform.position, transform.GetChild(0).transform.position);
+
+        if(Distance <= AttackRange)
+        {
+            if(EnemyState == EEnemyState.MoveToBase || EnemyState == EEnemyState.ChasePlayer)
+            {
+                TryToSetEnemyState(EEnemyState.Attack); 
+            }
+        }
     }
 }
