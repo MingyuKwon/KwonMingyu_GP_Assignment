@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450685943487413318}
-  - component: {fileID: 3886995004834992157}
+  - component: {fileID: 3794708516408659933}
   m_Layer: 0
-  m_Name: DeathEffect
+  m_Name: BigHitEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 4970701520290882873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3886995004834992157
+--- !u!114 &3794708516408659933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96eb576f2f07dd340af29e1a02a57405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 1
+  lifespan: 0.3
 --- !u!1 &4164173590084252410
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4164173590084252410}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 9ccf0354cb3cfe74abc35224a42a6357, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: ce9d773a28619da4bb9e84ff107b5db3, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0

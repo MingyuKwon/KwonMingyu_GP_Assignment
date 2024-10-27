@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     private float currentHealth = 0.1f;
 
     private CapsuleCollider capsuleCollider;
+    public GameObject DeathParticle;
 
     void Start()
     {
@@ -31,6 +32,13 @@ public class HealthManager : MonoBehaviour
 
             if(currentHealth <= 0)
             {
+                if(DeathParticle)
+                {
+                    GameObject clone = Instantiate(DeathParticle);
+                    clone.transform.position = transform.position;
+                    clone.transform.rotation = transform.rotation;
+                }
+
                 GamePlayManager.instance.EnemyDeathEvent.Invoke();
                 
                 if(transform.parent)

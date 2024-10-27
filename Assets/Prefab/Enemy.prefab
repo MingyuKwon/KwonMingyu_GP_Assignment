@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  DeathParticle: {fileID: 3133098113751031573, guid: 77133505a4df8084dbcfe47c83414aa3, type: 3}
+  HitParticle: {fileID: 3133098113751031573, guid: 27a991e843423d141830f5e8b9fa952e, type: 3}
 --- !u!1001 &5018319661413695071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -438,6 +440,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2836004475605291061, guid: f432554f564e69242897607d34218939, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 76a61eccc11250c4da8bd7f1d87fa2fe, type: 3}
+    - target: {fileID: 2836004475605291063, guid: f432554f564e69242897607d34218939, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300008, guid: 669b29b2139d8de4ca5447dd50e201af, type: 3}
+    - target: {fileID: 2836004475605291065, guid: f432554f564e69242897607d34218939, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300004, guid: e398e3aa9cdfcdc4ebd01a06e4c544ae, type: 3}
+    - target: {fileID: 2836004475605291067, guid: f432554f564e69242897607d34218939, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: 107649059ea401b4e9c5c20f21e99a55, type: 3}
+    - target: {fileID: 2836004475605291069, guid: f432554f564e69242897607d34218939, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300006, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+    - target: {fileID: 2836004475605291071, guid: f432554f564e69242897607d34218939, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: e6a236f5b06f9cb44ae1ca8b50fcd8ca, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

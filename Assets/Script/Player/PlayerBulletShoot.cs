@@ -7,6 +7,9 @@ public class PlayerBulletShoot : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject BigbulletPrefab;
 
+    public GameObject bulletMuzzle;
+    public GameObject BigbulletMuzzle;
+
     public GameObject shootPosition;
     public float fireDelayUnit = 1;
     public float BigfireDelayUnit = 1.5f;
@@ -43,6 +46,13 @@ public class PlayerBulletShoot : MonoBehaviour
             clone.transform.position = shootPosition.transform.position;
             clone.transform.rotation = shootPosition.transform.rotation;
 
+            if(bulletMuzzle)
+            {
+                clone = Instantiate(bulletMuzzle);
+                clone.transform.position = shootPosition.transform.position;
+                clone.transform.rotation = shootPosition.transform.rotation;
+            }
+
             normalfireDelay = fireDelayUnit;
         }
     }
@@ -56,6 +66,14 @@ public class PlayerBulletShoot : MonoBehaviour
             GameObject clone = Instantiate(BigbulletPrefab);
             clone.transform.position = shootPosition.transform.position;
             clone.transform.rotation = shootPosition.transform.rotation;
+
+            if(BigbulletMuzzle)
+            {
+                clone = Instantiate(BigbulletMuzzle);
+                clone.transform.position = shootPosition.transform.position;
+                clone.transform.rotation = shootPosition.transform.rotation;
+            }
+
 
             BigfireDelay = BigfireDelayUnit;
         }
