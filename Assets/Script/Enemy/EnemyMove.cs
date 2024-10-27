@@ -6,42 +6,40 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour
 {
     public float moveSpeed = 5.0f; 
-
+    private EnemyAI enemyAI;
     private NavMeshAgent agent;
     private Vector3 BasePosition;
-    Vector3 targetposition;
-    float targetDistance = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        targetposition = transform.position;
+        enemyAI = GetComponentInParent<EnemyAI>();
+
         BasePosition = GameObject.Find("Main Base").transform.position;
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = true;
 
-        
-        agent.isStopped = false;
-        agent.SetDestination(BasePosition);
+        enemyAI.TryToSetEnemyState(EEnemyState.MoveToBase);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        /*
-        Vector3 moveDirectrion = (targetposition - transform.position).normalized;
-        transform.parent.Translate(moveDirectrion * moveSpeed * Time.deltaTime);
-        targetDistance -= (moveDirectrion * moveSpeed * Time.deltaTime).magnitude;
+        if(enemyAI.GetEnemyState() == EEnemyState.MoveToBase)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(BasePosition);
+        }else if(enemyAI.GetEnemyState() == EEnemyState.ChasePlayer)
+        {
+            agent.isStopped = false;
+            if(enemyAI.targetObject)
+            {
+                agent.SetDestination(enemyAI.targetObject.transform.position);
+            }
 
-        if(targetDistance > 0) return;
+        }else
+        {
+            agent.isStopped = true;
 
-        float randomX = Random.Range(-5.0f, 5.0f);
-        float randomZ = Random.Range(-5.0f, 5.0f);
-
-        targetDistance = Vector3.Distance(targetposition , transform.position);
-        targetposition = transform.position + new Vector3(randomX, 0 , randomZ);
-        */
-
+        }
 
 
     }
