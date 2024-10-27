@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d0171bda54f2c4f9f08d10bb2957ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
+  bPlayerHealth: 1
+  DeathParticle: {fileID: 0}
 --- !u!136 &2217254271749695370
 CapsuleCollider:
   m_ObjectHideFlags: 0

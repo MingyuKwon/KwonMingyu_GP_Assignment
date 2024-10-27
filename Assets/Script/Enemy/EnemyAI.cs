@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public enum EEnemyState
 {
@@ -14,6 +15,7 @@ public enum EEnemyState
 public class EnemyAI : MonoBehaviour
 {
     private EEnemyState EnemyState = EEnemyState.Idle;
+    public GameObject EnemyStateLight;
 
     public EEnemyState GetEnemyState() {return EnemyState;}
     public GameObject targetObject = null;
@@ -21,17 +23,41 @@ public class EnemyAI : MonoBehaviour
 
     public float AttackRange = 15f;
 
+    private Light Enemylight;
+
+
     public void TryToSetEnemyState(EEnemyState aimEnemyState)
     {
         if(EnemyState == EEnemyState.GameEnd) return;
 
         EnemyState = aimEnemyState;
+
+        if(Enemylight != null)
+        {
+            if(GetEnemyState() == EEnemyState.MoveToBase)
+            {
+                Enemylight.color = Color.gray; 
+
+            }else if(GetEnemyState() == EEnemyState.ChasePlayer)
+            {
+                Enemylight.color = Color.yellow; 
+
+            }else if(GetEnemyState() == EEnemyState.Idle)
+            {
+                Enemylight.color = Color.green; 
+
+            }else if(GetEnemyState() == EEnemyState.Attack)
+            {
+                Enemylight.color = Color.red; 
+            }
+        }
     }
 
     void Start()
     {
         EnemyState = EEnemyState.Idle;
         MainBase = GameObject.Find("Main Base");
+        Enemylight = EnemyStateLight.GetComponent<Light>();
 
     }
 

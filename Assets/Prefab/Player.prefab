@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  bNotDestroyInvisible: 1
+  bPlayerHealth: 1
   DeathParticle: {fileID: 3133098113751031573, guid: 77133505a4df8084dbcfe47c83414aa3, type: 3}
 --- !u!1001 &374160179525190711
 PrefabInstance:

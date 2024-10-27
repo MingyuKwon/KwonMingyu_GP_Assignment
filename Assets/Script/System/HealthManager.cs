@@ -7,7 +7,7 @@ public class HealthManager : MonoBehaviour
 {
     public float maxHealth = 100.0f;
     private float currentHealth = 0.1f;
-    public bool bNotDestroyInvisible = false;
+    public bool bPlayerHealth = false;
 
     private CapsuleCollider capsuleCollider;
     public GameObject DeathParticle;
@@ -42,19 +42,21 @@ public class HealthManager : MonoBehaviour
                     clone.transform.rotation = transform.rotation;
                 }
 
-                GamePlayManager.instance.EnemyDeathEvent.Invoke();
 
-                if(bNotDestroyInvisible)
+                if(bPlayerHealth)
                 {
+                    GamePlayManager.instance.GameOverEvent.Invoke();
                     if(transform.parent)
                     {
-                        transform.parent.gameObject.SetActive(false);
+
                     }else
                     {
-                        transform.gameObject.SetActive(false);
+
                     }
 
                 }else{
+                    GamePlayManager.instance.EnemyDeathEvent.Invoke();
+
                     if(transform.parent)
                     {
                         Destroy(transform.parent.gameObject);

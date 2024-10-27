@@ -11,6 +11,8 @@ public class GamePlayManager : MonoBehaviour
     public int killTargetAmount = 5;
 
     public UnityEvent EnemyDeathEvent;
+    public UnityEvent GameOverEvent;
+
     private bool bGameEnd = false;
 
     private void Awake() {
@@ -23,16 +25,17 @@ public class GamePlayManager : MonoBehaviour
     void Start()
     {
         EnemyDeathEvent.AddListener(EnemyDieCallBack);
+        GameOverEvent.AddListener(GameOverCallBack);
     }
 
     void EnemyDieCallBack()
     {
         killTargetAmount--;
+    }
 
-        if(killTargetAmount <= 0)
-        {
-            GameEnd(true);
-        }
+    void GameOverCallBack()
+    {
+        GameEnd(false);
     }
 
     void GameEnd(bool bVictory)
@@ -58,7 +61,7 @@ public class GamePlayManager : MonoBehaviour
 
         if(GameLeftTime <= 0)
         {
-            GameEnd(false);
+            GameEnd(true);
         }
     }
 }
