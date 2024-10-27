@@ -13,7 +13,6 @@ public class GamePlayManager : MonoBehaviour
     public UnityEvent EnemyDeathEvent;
     private bool bGameEnd = false;
 
-
     private void Awake() {
         if(instance == null)
         {
