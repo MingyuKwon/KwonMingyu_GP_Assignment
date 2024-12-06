@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,15 @@ public class GamePlayManager : MonoBehaviour
 {
     public static GamePlayManager instance;
     
-    float GameLeftTime = 60.0f;
+    float GameLeftTime = 45.0f;
     public int killTargetAmount = 5;
 
     public UnityEvent EnemyDeathEvent;
     public UnityEvent GameOverEvent;
+
+    public Action<float> NexusHealthUpdateEvent;
+    public Action<float> PlayerHealthUpdateEvent;
+    public Action<int> TimeAlertEvent;
 
     private bool bGameEnd = false;
 
@@ -59,6 +64,8 @@ public class GamePlayManager : MonoBehaviour
         if(bGameEnd) return;
 
         GameLeftTime -= Time.deltaTime;
+
+        TimeAlertEvent.Invoke((int)GameLeftTime);
 
         if(GameLeftTime <= 0)
         {

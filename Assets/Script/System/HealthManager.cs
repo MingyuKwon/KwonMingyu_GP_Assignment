@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     public float maxHealth = 100.0f;
     private float currentHealth = 0.1f;
     public bool bPlayerHealth = false;
+    public bool bNexusHealth = false;
 
     private CapsuleCollider capsuleCollider;
     public GameObject DeathParticle;
@@ -30,6 +31,17 @@ public class HealthManager : MonoBehaviour
             float attackedDamage = damageCauser.Damage;
             currentHealth -= attackedDamage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+            if(bNexusHealth)
+            {
+                GamePlayManager.instance.NexusHealthUpdateEvent.Invoke(currentHealth / maxHealth);
+            }else
+            {
+                if(bPlayerHealth)
+                {
+                    GamePlayManager.instance.PlayerHealthUpdateEvent.Invoke(currentHealth / maxHealth);
+                }
+            }
 
             if(currentHealth <= 0)
             {
@@ -60,11 +72,5 @@ public class HealthManager : MonoBehaviour
                 
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

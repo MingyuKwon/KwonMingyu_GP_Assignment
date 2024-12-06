@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    public float moveSpeed = 5.0f; 
+    public float moveSpeed = 8.0f; 
     private EnemyAI enemyAI;
     private NavMeshAgent agent;
     private Vector3 BasePosition;
