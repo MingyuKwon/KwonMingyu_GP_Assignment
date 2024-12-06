@@ -13,7 +13,7 @@ public class RandomEnemySpawner : MonoBehaviour
     void Start()
     {
         int randValue = Random.Range(0, 10);
-        if(randValue < 5)
+        if(randValue < 7)
         {
             if(enemyPrefab)
             {

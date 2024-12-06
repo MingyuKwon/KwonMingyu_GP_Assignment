@@ -40,6 +40,8 @@ public class EnemyAttack : MonoBehaviour
         if(bulletPrefab == null || shootPosition == null) return;
         if(fireCoolTime > 0) return;
 
+        AudioManager.instance.PlaySound(AudioManager.EAudioType.EAT_EnemyShoot, 1, transform.position);
+
         GameObject clone = Instantiate(bulletPrefab);
         clone.transform.position = shootPosition.transform.position;
         clone.transform.rotation = shootPosition.transform.rotation;

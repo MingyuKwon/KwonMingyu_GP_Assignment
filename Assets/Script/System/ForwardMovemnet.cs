@@ -20,6 +20,8 @@ public class ForwardMovemnet : MonoBehaviour
         if (HitParticle) {
             GameObject hitClone = Instantiate(HitParticle, other.ClosestPoint(transform.position), Quaternion.identity);
             hitClone.transform.rotation = Quaternion.LookRotation(transform.position - other.transform.position);
+
+            AudioManager.instance.PlaySound(AudioManager.EAudioType.EAT_BulletSplash, 1, transform.position);
         }
     }
 }

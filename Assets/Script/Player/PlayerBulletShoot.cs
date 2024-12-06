@@ -42,6 +42,8 @@ public class PlayerBulletShoot : MonoBehaviour
         if(normalfireDelay > 0) return;
 
         if (Input.GetKey(KeyCode.Mouse0)) {
+            AudioManager.instance.PlaySound(AudioManager.EAudioType.EAT_PlayerShoot1, 2, transform.position);
+
             GameObject clone = Instantiate(bulletPrefab);
             clone.transform.position = shootPosition.transform.position;
             clone.transform.rotation = shootPosition.transform.rotation;
@@ -63,6 +65,7 @@ public class PlayerBulletShoot : MonoBehaviour
         if(BigfireDelay > 0) return;
 
         if (Input.GetKey(KeyCode.Mouse1)) {
+            AudioManager.instance.PlaySound(AudioManager.EAudioType.EAT_PlayerShoot2, 2, transform.position);
             GameObject clone = Instantiate(BigbulletPrefab);
             clone.transform.position = shootPosition.transform.position;
             clone.transform.rotation = shootPosition.transform.rotation;

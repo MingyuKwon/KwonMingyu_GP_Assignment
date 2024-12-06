@@ -33,6 +33,8 @@ public class HealthManager : MonoBehaviour
 
             if(currentHealth <= 0)
             {
+                AudioManager.instance.PlaySound(AudioManager.EAudioType.EAT_EnemyDeath, 1, Camera.main.transform.position);
+
                 if(DeathParticle)
                 {
                     GameObject clone = Instantiate(DeathParticle);
@@ -44,14 +46,6 @@ public class HealthManager : MonoBehaviour
                 if(bPlayerHealth)
                 {
                     GamePlayManager.instance.GameOverEvent.Invoke();
-                    if(transform.parent)
-                    {
-
-                    }else
-                    {
-
-                    }
-
                 }else{
                     GamePlayManager.instance.EnemyDeathEvent.Invoke();
 

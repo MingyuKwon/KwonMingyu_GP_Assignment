@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class GamePlayManager : MonoBehaviour
 {
     public static GamePlayManager instance;
-    public float GameLeftTime = 300.0f;
+    
+    float GameLeftTime = 60.0f;
     public int killTargetAmount = 5;
 
     public UnityEvent EnemyDeathEvent;

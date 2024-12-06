@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -30,7 +31,6 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -44,11 +44,23 @@ public class AudioManager : MonoBehaviour
         backgroundAudioSource = bgmObject.AddComponent<AudioSource>();
         backgroundAudioSource.loop = true; 
         bgmObject.transform.parent = this.transform;
+
+        if(SceneManager.GetActiveScene().name == "VictoryRoom")
+        {
+            PlayBackgroundMusic(2);
+        }else if(SceneManager.GetActiveScene().name == "LoseRoom")
+        {
+            PlayBackgroundMusic(1);
+        }else{
+            PlayBackgroundMusic(0);
+        }
+        
     }
 
     public void PlaySound(EAudioType audioType, float volume, Vector3 location)
     {
         int index = (int)audioType;
+
         if (index < audioClipList.Count)
         {
             AudioSource.PlayClipAtPoint(audioClipList[index], location, volume);
@@ -56,12 +68,12 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void PlayBackgroundMusic(EAudioType audioType, float volume)
+    public void PlayBackgroundMusic(int index)
     {
         if (0 < audioClipList.Count)
         {
-            backgroundAudioSource.clip = audioClipList[0];
-            backgroundAudioSource.volume = volume;
+            backgroundAudioSource.clip = audioClipList[index];
+            backgroundAudioSource.volume = 0.5f;
             backgroundAudioSource.Play();
         }
         
