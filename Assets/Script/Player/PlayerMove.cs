@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float speed = 0.1f;
+    float speed = 10f;
 
     private Rigidbody rigidbody;
 
@@ -18,14 +18,11 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if(rigidbody == null) return;
-        if (Input.GetKey(KeyCode.LeftControl)) { rigidbody.velocity = Vector3.zero; return;}
-
         float moveSpeed = speed;
-        if (Input.GetKey(KeyCode.LeftShift)) { moveSpeed = moveSpeed * 1.5f;}
 
-        if (Input.GetKey(KeyCode.W)) { rigidbody.AddRelativeForce(0, 0, moveSpeed * Time.deltaTime); }
-        if (Input.GetKey(KeyCode.S)) { rigidbody.AddRelativeForce(0, 0, -moveSpeed * Time.deltaTime); }
-        if (Input.GetKey(KeyCode.D)) { rigidbody.AddRelativeForce(moveSpeed * Time.deltaTime, 0, 0); }
-        if (Input.GetKey(KeyCode.A)) { rigidbody.AddRelativeForce(-moveSpeed * Time.deltaTime, 0, 0); }
+        if (Input.GetKey(KeyCode.W)) { transform.Translate(0, 0, moveSpeed * Time.deltaTime); }
+        if (Input.GetKey(KeyCode.S)) { transform.Translate(0, 0, -moveSpeed * Time.deltaTime); }
+        if (Input.GetKey(KeyCode.D)) { transform.Translate(moveSpeed * Time.deltaTime, 0, 0); }
+        if (Input.GetKey(KeyCode.A)) { transform.Translate(-moveSpeed * Time.deltaTime, 0, 0); }
     }
 }

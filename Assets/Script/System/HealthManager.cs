@@ -29,8 +29,6 @@ public class HealthManager : MonoBehaviour
         {
             float attackedDamage = damageCauser.Damage;
             currentHealth -= attackedDamage;
-            UnityEngine.Debug.Log(currentHealth);
-
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
             if(currentHealth <= 0)
