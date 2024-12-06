@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class PlayUI : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class PlayUI : MonoBehaviour
     public Scrollbar NexusHealth;
     public Scrollbar PlayerHealth;
     public TextMeshProUGUI TimeLeft;
+
+    public GameObject pauseCanvas;
 
     private bool isPaused = false;
 
@@ -19,10 +23,33 @@ public class PlayUI : MonoBehaviour
         GamePlayManager.instance.PlayerHealthUpdateEvent -= UpdatePlayerHealth;
     }
 
+    public void Restart()
+    {
+        TogglePause();
+        SceneManager.LoadScene("Assignmnet6");
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+
     private void Start() {
+
+        if(pauseCanvas)
+        {
+            pauseCanvas.SetActive(false);
+        }
+
         GamePlayManager.instance.NexusHealthUpdateEvent += UpdateNexusHealth;
         GamePlayManager.instance.TimeAlertEvent += UpdateLeftTime;
         GamePlayManager.instance.PlayerHealthUpdateEvent += UpdatePlayerHealth;
+
+        
     }
 
     void Update()
@@ -43,13 +70,23 @@ public class PlayUI : MonoBehaviour
     {
         if (isPaused)
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
             isPaused = false;
+
         }
         else
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 0;
             isPaused = true;
+        }
+
+        if(pauseCanvas)
+        {
+            pauseCanvas.SetActive(isPaused);
         }
     }
 
