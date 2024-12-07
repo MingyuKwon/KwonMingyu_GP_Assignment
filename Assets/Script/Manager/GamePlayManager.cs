@@ -9,7 +9,7 @@ public class GamePlayManager : MonoBehaviour
 {
     public static GamePlayManager instance;
     
-    float GameLeftTime = 45.0f;
+    float GameLeftTime = 40.0f;
     public int killTargetAmount = 5;
 
     public UnityEvent EnemyDeathEvent;

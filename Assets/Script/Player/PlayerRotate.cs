@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class PlayerRotate : MonoBehaviour
 {
-    public float mouseSensitivility = 0.1f;
+    public float mouseSensitivility = 100;
 
     float ActionLockTime = 5;
 
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         ActionLockTime -= Time.deltaTime;
         ActionLockTime = Mathf.Max(ActionLockTime, 0);
-        if(ActionLockTime > 0) return;
+    }
 
+    private void FixedUpdate() {
+        if(ActionLockTime > 0) return;
         float mouseX = Input.GetAxis("Mouse X");
-        transform.Rotate(0, mouseX * mouseSensitivility * Time.deltaTime, 0);
+        transform.Rotate(0, mouseX * mouseSensitivility * Time.fixedDeltaTime, 0);
 
     }
 }

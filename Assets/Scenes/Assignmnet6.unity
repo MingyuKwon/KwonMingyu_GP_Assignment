@@ -7683,11 +7683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3891573966486199454, guid: 7d66b89576d26964ba16bf9603196e3a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70663184
+      value: 0.7066319
       objectReference: {fileID: 0}
     - target: {fileID: 3891573966486199454, guid: 7d66b89576d26964ba16bf9603196e3a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000031518006
+      value: -0.000000031518013
       objectReference: {fileID: 0}
     - target: {fileID: 3891573966486199454, guid: 7d66b89576d26964ba16bf9603196e3a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -7695,7 +7695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3891573966486199454, guid: 7d66b89576d26964ba16bf9603196e3a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000003156036
+      value: -0.000000031560365
       objectReference: {fileID: 0}
     - target: {fileID: 3891573966486199454, guid: 7d66b89576d26964ba16bf9603196e3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -22245,6 +22245,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 25623084161815035, guid: 9ffeab233ba197f4087d597bd88c9ef6, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 549839361096201043, guid: 9ffeab233ba197f4087d597bd88c9ef6, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -27187,7 +27191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255899157}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0084558, y: 0.8217048, z: 0.012195745, w: 0.5697202}
+  m_LocalRotation: {x: -0.008455642, y: 0.8217048, z: 0.012195428, w: 0.5697202}
   m_LocalPosition: {x: 360.8163, y: 59.556065, z: 872.79175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47697,7 +47701,7 @@ SceneRoots:
   - {fileID: 696777422264517108}
   - {fileID: 5631200642105836944}
   - {fileID: 983105425}
+  - {fileID: 340698833}
   - {fileID: 1323711336}
   - {fileID: 1255899159}
   - {fileID: 210340347}
-  - {fileID: 340698833}
