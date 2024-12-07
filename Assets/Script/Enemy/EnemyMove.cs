@@ -10,8 +10,11 @@ public class EnemyMove : MonoBehaviour
     private NavMeshAgent agent;
     private Vector3 BasePosition;
 
+    private Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         enemyAI = GetComponentInParent<EnemyAI>();
 
         BasePosition = GameObject.Find("Main Base").transform.position;
@@ -65,6 +68,9 @@ public class EnemyMove : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); 
         }
+
+        animator.SetFloat("yInput", agent.isStopped ? 0 : 1);
+
 
     }
 }

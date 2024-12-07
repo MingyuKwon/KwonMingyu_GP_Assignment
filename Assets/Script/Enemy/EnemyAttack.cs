@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject shootPosition;
 
     private EnemyAI enemyAI;
+    private Animator animator;
     public float fireCoolTimeUnit = 1f;
 
     private float fireCoolTime = 0f;
@@ -17,6 +18,7 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
         enemyAI = GetComponent<EnemyAI>();
+        animator = GetComponentInChildren<Animator>();
         fireCoolTime = fireCoolTimeUnit;
     }
 
@@ -41,6 +43,7 @@ public class EnemyAttack : MonoBehaviour
         if(fireCoolTime > 0) return;
 
         AudioManager.instance.PlaySound(AudioManager.EAudioType.EAT_EnemyShoot, 1, transform.position);
+        animator.SetTrigger("Shoot");
 
         GameObject clone = Instantiate(bulletPrefab);
         clone.transform.position = shootPosition.transform.position;
