@@ -18,9 +18,13 @@ public class PlayUI : MonoBehaviour
     private bool isPaused = false;
 
     private void OnDisable() {
-        GamePlayManager.instance.NexusHealthUpdateEvent -= UpdateNexusHealth;
-        GamePlayManager.instance.TimeAlertEvent -= UpdateLeftTime;
-        GamePlayManager.instance.PlayerHealthUpdateEvent -= UpdatePlayerHealth;
+        if(GamePlayManager.instance)
+        {
+            GamePlayManager.instance.NexusHealthUpdateEvent -= UpdateNexusHealth;
+            GamePlayManager.instance.TimeAlertEvent -= UpdateLeftTime;
+            GamePlayManager.instance.PlayerHealthUpdateEvent -= UpdatePlayerHealth;
+        }
+        
     }
 
     public void Restart()
@@ -44,10 +48,13 @@ public class PlayUI : MonoBehaviour
         {
             pauseCanvas.SetActive(false);
         }
-
-        GamePlayManager.instance.NexusHealthUpdateEvent += UpdateNexusHealth;
-        GamePlayManager.instance.TimeAlertEvent += UpdateLeftTime;
-        GamePlayManager.instance.PlayerHealthUpdateEvent += UpdatePlayerHealth;
+        if(GamePlayManager.instance)
+        {
+            GamePlayManager.instance.NexusHealthUpdateEvent += UpdateNexusHealth;
+            GamePlayManager.instance.TimeAlertEvent += UpdateLeftTime;
+            GamePlayManager.instance.PlayerHealthUpdateEvent += UpdatePlayerHealth;
+        }
+        
 
         
     }
