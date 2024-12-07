@@ -19,6 +19,7 @@ public class PlayerBulletShoot : MonoBehaviour
 
     private Animator animator;
 
+    float ActionLockTime = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,10 @@ public class PlayerBulletShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ActionLockTime -= Time.deltaTime;
+        ActionLockTime = Mathf.Max(ActionLockTime, 0);
+        if(ActionLockTime > 0) return;
+
         normalfireDelay -= Time.deltaTime;
         normalfireDelay = Mathf.Clamp(normalfireDelay, 0, fireDelayUnit);
 
@@ -71,7 +76,7 @@ public class PlayerBulletShoot : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1)) {
             AudioManager.instance.PlaySound(AudioManager.EAudioType.EAT_PlayerShoot2, 2, transform.position);
             animator.SetTrigger("Shoot");
-            
+
             GameObject clone = Instantiate(BigbulletPrefab);
             clone.transform.position = shootPosition.transform.position;
             clone.transform.rotation = shootPosition.transform.rotation;

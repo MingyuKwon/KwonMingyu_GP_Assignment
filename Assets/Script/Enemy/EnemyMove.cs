@@ -12,6 +12,8 @@ public class EnemyMove : MonoBehaviour
 
     private Animator animator;
 
+    float ActionLockTime = 5;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -27,6 +29,10 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         if(agent == null) return;
+
+        ActionLockTime -= Time.deltaTime;
+        ActionLockTime = Mathf.Max(ActionLockTime, 0);
+        if(ActionLockTime > 0) return;
 
         Vector3 targetLocation = Vector3.zero;
         if(enemyAI.GetEnemyState() == EEnemyState.MoveToBase)

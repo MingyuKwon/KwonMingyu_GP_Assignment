@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
 
     private Animator animator;
 
+    float ActionLockTime = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,11 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if(animator == null) return;
+
+        ActionLockTime -= Time.deltaTime;
+        ActionLockTime = Mathf.Max(ActionLockTime, 0);
+        if(ActionLockTime > 0) return;
+
         float moveSpeed = speed;
 
         float yInputValue = 0;
