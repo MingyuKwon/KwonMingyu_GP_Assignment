@@ -13,8 +13,12 @@ public class HealthManager : MonoBehaviour
     private CapsuleCollider capsuleCollider;
     public GameObject DeathParticle;
 
+    private Animator animator;
+
     void Start()
     {
+        animator = transform.parent.GetComponent<Animator>();
+
         currentHealth = maxHealth;
         capsuleCollider = GetComponent<CapsuleCollider>();
 
