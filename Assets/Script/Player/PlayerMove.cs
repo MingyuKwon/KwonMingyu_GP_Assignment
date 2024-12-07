@@ -6,23 +6,46 @@ public class PlayerMove : MonoBehaviour
 {
     float speed = 10f;
 
-    private Rigidbody rigidbody;
+    private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(rigidbody == null) return;
+        if(animator == null) return;
         float moveSpeed = speed;
 
-        if (Input.GetKey(KeyCode.W)) { transform.Translate(0, 0, moveSpeed * Time.deltaTime); }
-        if (Input.GetKey(KeyCode.S)) { transform.Translate(0, 0, -moveSpeed * Time.deltaTime); }
-        if (Input.GetKey(KeyCode.D)) { transform.Translate(moveSpeed * Time.deltaTime, 0, 0); }
-        if (Input.GetKey(KeyCode.A)) { transform.Translate(-moveSpeed * Time.deltaTime, 0, 0); }
+        float yInputValue = 0;
+        float xInputValue = 0;
+
+        if (Input.GetKey(KeyCode.W)) { 
+            transform.Translate(0, 0, moveSpeed * Time.deltaTime); 
+            yInputValue = 1;
+            }
+
+        if (Input.GetKey(KeyCode.S)) { 
+            transform.Translate(0, 0, -moveSpeed * Time.deltaTime); 
+            yInputValue = -1;
+            }
+
+        if (Input.GetKey(KeyCode.D)) { 
+            transform.Translate(moveSpeed * Time.deltaTime, 0, 0); 
+            xInputValue = 1;
+            }
+
+        if (Input.GetKey(KeyCode.A)) { 
+            transform.Translate(-moveSpeed * Time.deltaTime, 0, 0); 
+            xInputValue = -1;
+            }
+
+        
+        animator.SetFloat("xInput", xInputValue);
+        animator.SetFloat("yInput", yInputValue);
     }
 }
